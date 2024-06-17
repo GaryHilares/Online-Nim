@@ -6,7 +6,7 @@ project(OnlineNim)
 set(CMAKE_BUILD_TYPE "Debug")
 
 # C++ settings
-set(CMAKE_CXX_STANDARD 14) # 14+ required by GoogleTest
+set(CMAKE_CXX_STANDARD 17) # 17+ required by application, 14+ required by GoogleTest
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
@@ -35,6 +35,11 @@ enable_testing()
 
 # Set sources, include directories and libraries
 set(CPPSources
+    "src/controller/GameController.cpp"
+    "src/controller/InputScanner.cpp"
+    "src/model/GameState.cpp"
+    "src/model/Move.cpp"
+    "src/view/GameView.cpp"
     "src/main.cpp"
     )
 set(LINK_LIBRARIES GTest::gtest_main)
@@ -45,5 +50,5 @@ add_executable(OnlineNim ${CPPSources})
 target_include_directories(OnlineNim PRIVATE ${INCLUDE_DIRS})
 target_link_libraries(OnlineNim ${LINK_LIBRARIES})
 
-include(GoogleTest)
-gtest_discover_tests(OnlineNim)
+# include(GoogleTest)
+# gtest_discover_tests(OnlineNim)

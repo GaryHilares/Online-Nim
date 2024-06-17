@@ -1,0 +1,47 @@
+#include "../../include/model/GameState.hpp"
+#include <cassert>
+
+GameState::GameState()
+    : m_piles(5, 50)
+    , m_turn(1)
+{
+}
+
+const std::vector<int>& GameState::getPiles() const
+{
+    return m_piles;
+}
+
+int GameState::getTurn() const
+{
+    return m_turn;
+}
+
+bool GameState::isLegalMove(Move move) const
+{
+    const int pile_number = move.getPileNumber();
+    const int num_to_remove = move.getNumToRemove();
+    return pile_number < m_piles.size() && pile_number >= 0
+        && num_to_remove <= m_piles[move.getPileNumber()] && num_to_remove > 0;
+}
+
+void GameState::makeMove(Move move)
+{
+    assert(isLegalMove(move));
+    m_piles[move.getPileNumber()] -= move.getNumToRemove();
+    if (m_turn == 1) {
+        m_turn = 2;
+    } else {
+        m_turn = 1;
+    }
+}
+
+bool GameState::hasGameEnded() const
+{
+    for (int pile : m_piles) {
+        if (pile != 0) {
+            return false;
+        }
+    }
+    return true;
+}
