@@ -13,4 +13,5 @@ public:
     void outputWelcome();
     void outputGameState();
     void outputPrompt();
+    void outputWinner();
 };

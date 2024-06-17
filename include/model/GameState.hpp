@@ -7,6 +7,8 @@ class GameState {
 private:
     std::vector<int> m_piles;
     int m_turn;
+    bool m_has_game_ended;
+    bool areAllPilesEmpty() const;
 
 public:
     GameState();

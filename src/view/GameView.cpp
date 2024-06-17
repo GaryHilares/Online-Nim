@@ -1,5 +1,6 @@
 #include "../../include/view/GameView.hpp"
 #include "../../include/model/GameState.hpp"
+#include <cassert>
 
 GameView::GameView(const GameState& game_state, std::ostream& output_stream)
     : m_game_state(game_state)
@@ -31,4 +32,10 @@ void GameView::outputGameState()
 void GameView::outputPrompt()
 {
     m_output_stream << "Player " << m_game_state.getTurn() << "> " << std::flush;
+}
+
+void GameView::outputWinner()
+{
+    assert(m_game_state.hasGameEnded());
+    m_output_stream << "Player " << m_game_state.getTurn() << " won the game!" << std::endl;
 }

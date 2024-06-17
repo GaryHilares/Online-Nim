@@ -19,4 +19,5 @@ void GameController::run()
         }
         m_state.makeMove(input_move.value());
     }
+    m_view.outputWinner();
 }
