@@ -1,8 +1,8 @@
-#include "../include/controller/GameController.hpp"
+#include "../include/controller/AppController.hpp"
 #include <iostream>
 
 int main()
 {
-    GameController game_controller(std::cin, std::cout);
-    game_controller.run();
+    AppController app_controller;
+    app_controller.run();
 }

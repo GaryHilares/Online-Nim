@@ -1,4 +1,5 @@
 #include "../../include/controller/GameController.hpp"
+#include "../../include/controller/MenuContext.hpp"
 
 GameController::GameController(std::istream& input_stream, std::ostream& output_stream)
     : m_state()
@@ -7,7 +8,7 @@ GameController::GameController(std::istream& input_stream, std::ostream& output_
 {
 }
 
-void GameController::run()
+void GameController::run(MenuContext& menu_context)
 {
     m_view.outputWelcome();
     while (!m_state.hasGameEnded()) {
@@ -20,4 +21,5 @@ void GameController::run()
         m_state.makeMove(input_move.value());
     }
     m_view.outputWinner();
+    menu_context.setExit();
 }
