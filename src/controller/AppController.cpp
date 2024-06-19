@@ -1,9 +1,9 @@
 #include "../../include/controller/AppController.hpp"
-#include "../../include/controller/GameController.hpp"
+#include "../../include/controller/MainMenuState.hpp"
 #include <iostream>
 
 AppController::AppController()
-    : m_context(new GameController(std::cin, std::cout))
+    : m_context(new MainMenuState(std::cin, std::cout))
 {
 }
 

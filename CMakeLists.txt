@@ -37,6 +37,7 @@ enable_testing()
 set(CPPSources
     "src/controller/AppController.cpp"
     "src/controller/GameController.cpp"
+    "src/controller/MainMenuState.cpp"
     "src/controller/InputScanner.cpp"
     "src/controller/MenuContext.cpp"
     "src/model/GameState.cpp"
