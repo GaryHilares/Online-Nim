@@ -36,8 +36,8 @@ enable_testing()
 # Set sources, include directories and libraries
 set(CPPSources
     "src/controller/AppController.cpp"
-    "src/controller/GameController.cpp"
-    "src/controller/MainMenuState.cpp"
+    "src/controller/MenuStates/GameMenuState.cpp"
+    "src/controller/MenuStates/MainMenuState.cpp"
     "src/controller/InputScanner.cpp"
     "src/controller/MenuContext.cpp"
     "src/model/GameState.cpp"

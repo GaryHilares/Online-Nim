@@ -1,14 +1,14 @@
-#include "../../include/controller/GameController.hpp"
-#include "../../include/controller/MenuContext.hpp"
+#include "../../../include/controller/MenuStates/GameMenuState.hpp"
+#include "../../../include/controller/MenuContext.hpp"
 
-GameController::GameController(std::istream& input_stream, std::ostream& output_stream)
+GameMenuState::GameMenuState(std::istream& input_stream, std::ostream& output_stream)
     : m_state()
     , m_view(m_state, output_stream)
     , m_scanner(input_stream)
 {
 }
 
-void GameController::run(MenuContext& menu_context)
+void GameMenuState::run(MenuContext& menu_context)
 {
     m_view.outputWelcome();
     while (!m_state.hasGameEnded()) {
