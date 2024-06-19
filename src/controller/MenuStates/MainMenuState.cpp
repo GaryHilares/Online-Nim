@@ -1,4 +1,5 @@
 #include "../../../include/controller/MenuStates/MainMenuState.hpp"
+#include "../../../include/controller/LocalStreamPlayer.hpp"
 #include "../../../include/controller/MenuContext.hpp"
 #include "../../../include/controller/MenuStates/GameMenuState.hpp"
 #include "../../../include/controller/MenuStates/HostMenuState.hpp"
@@ -23,9 +24,10 @@ void MainMenuState::run(MenuContext& context)
         m_output_stream << "Player> ";
     } while (!(m_input_stream >> choice && choice <= 3 && choice >= 1));
     if (choice == 1) {
-        context.setState(new GameMenuState(m_input_stream, m_output_stream));
-    }
-    if (choice == 2) {
+        context.setState(new GameMenuState(m_output_stream,
+            new LocalStreamPlayer(m_input_stream),
+            new LocalStreamPlayer(m_input_stream)));
+    } else if (choice == 2) {
         context.setState(new HostMenuState(m_input_stream, m_output_stream));
     } else {
         context.setState(new JoinMenuState(m_input_stream, m_output_stream));

@@ -1,4 +1,6 @@
 #pragma once
+#include "../controller/Player.hpp"
+#include <memory>
 #include <ostream>
 
 class GameState;
@@ -12,6 +14,6 @@ public:
     GameView(const GameState& game_state, std::ostream& output_stream);
     void outputWelcome();
     void outputGameState();
-    void outputPrompt();
+    void outputPrompt(const std::unique_ptr<Player>& player);
     void outputWinner();
 };
