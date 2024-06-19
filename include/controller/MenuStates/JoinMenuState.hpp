@@ -3,12 +3,12 @@
 #include <istream>
 #include <ostream>
 
-class MainMenuState : public MenuState {
+class JoinMenuState : public MenuState {
 private:
     std::istream& m_input_stream;
     std::ostream& m_output_stream;
 
 public:
-    MainMenuState(std::istream& input_stream, std::ostream& output_stream);
+    JoinMenuState(std::istream& input_stream, std::ostream& output_stream);
     void run(MenuContext& context) override;
 };

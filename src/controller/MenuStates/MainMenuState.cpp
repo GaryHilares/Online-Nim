@@ -1,6 +1,8 @@
 #include "../../../include/controller/MenuStates/MainMenuState.hpp"
 #include "../../../include/controller/MenuContext.hpp"
 #include "../../../include/controller/MenuStates/GameMenuState.hpp"
+#include "../../../include/controller/MenuStates/HostMenuState.hpp"
+#include "../../../include/controller/MenuStates/JoinMenuState.hpp"
 #include <string>
 
 MainMenuState::MainMenuState(std::istream& input_stream, std::ostream& output_stream)
@@ -22,8 +24,10 @@ void MainMenuState::run(MenuContext& context)
     } while (!(m_input_stream >> choice && choice <= 3 && choice >= 1));
     if (choice == 1) {
         context.setState(new GameMenuState(m_input_stream, m_output_stream));
+    }
+    if (choice == 2) {
+        context.setState(new HostMenuState(m_input_stream, m_output_stream));
     } else {
-        m_output_stream << "Not implemented." << std::endl;
-        context.setExit();
+        context.setState(new JoinMenuState(m_input_stream, m_output_stream));
     }
 }

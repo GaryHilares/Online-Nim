@@ -59,6 +59,8 @@ set(CPPSources
     "src/controller/AppController.cpp"
     "src/controller/MenuStates/GameMenuState.cpp"
     "src/controller/MenuStates/MainMenuState.cpp"
+    "src/controller/MenuStates/HostMenuState.cpp"
+    "src/controller/MenuStates/JoinMenuState.cpp"
     "src/controller/InputScanner.cpp"
     "src/controller/MenuContext.cpp"
     "src/model/GameState.cpp"
