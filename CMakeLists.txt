@@ -21,17 +21,38 @@ endif()
 # CMake settings
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
 make_directory("${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+set(TO_LINK)
+set(TO_INCLUDE)
 
-# Find and configure GoogleTest
+# Find and configure dependencies
+## Find and configure SFML
+set(SFML_ROOT_DIR "extlibs/SFML-2.5.1")
+set(SFML_DIR "${SFML_ROOT_DIR}/lib/cmake/SFML")
+if(WIN32)
+    find_package(SFML COMPONENTS main network graphics window system REQUIRED)
+else()
+    find_package(SFML COMPONENTS network graphics window system REQUIRED)
+endif()
+
+if (WIN32)
+    set(TO_LINK ${TO_LINK} sfml-main sfml-network sfml-graphics sfml-window sfml-system)
+else()
+    set(TO_LINK ${TO_LINK} sfml-network sfml-graphics sfml-window sfml-system)
+endif()
+set(TO_INCLUDE ${TO_INCLUDE} ${SFML_ROOT_DIR}/include)
+
+## Find and configure GoogleTest
 include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
-## For Windows: Prevent overriding the parent project's compiler/linker settings
+### For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 enable_testing()
+
+set(TO_LINK ${TO_LINK} GTest::gtest_main)
 
 # Set sources, include directories and libraries
 set(CPPSources
@@ -45,8 +66,8 @@ set(CPPSources
     "src/view/GameView.cpp"
     "src/main.cpp"
     )
-set(LINK_LIBRARIES GTest::gtest_main)
-set(INCLUDE_DIRS)
+set(LINK_LIBRARIES ${TO_LINK})
+set(INCLUDE_DIRS ${TO_INCLUDE})
 
 # Build executable and link libraries
 add_executable(OnlineNim ${CPPSources})
