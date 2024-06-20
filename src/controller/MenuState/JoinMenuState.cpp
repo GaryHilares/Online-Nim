@@ -29,7 +29,7 @@ void JoinMenuState::run(MenuContext& context)
     } else {
         m_output_stream << "Connection established successfully!" << std::endl;
         context.setState(std::make_unique<GameMenuState>(m_output_stream,
-            std::make_unique<RemoteOnlinePlayer>(client),
-            std::make_unique<LocalOnlinePlayer>(m_input_stream, client)));
+            std::make_unique<RemoteOnlinePlayerInput>(client),
+            std::make_unique<LocalOnlinePlayerInput>(m_input_stream, client)));
     }
 }

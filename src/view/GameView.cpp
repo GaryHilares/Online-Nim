@@ -29,7 +29,7 @@ void GameView::outputGameState()
     m_output_stream << "]\nPlayer " << m_game_state.getTurn() << " to play." << std::endl;
 }
 
-void GameView::outputPrompt(const std::unique_ptr<Player>& player)
+void GameView::outputPrompt(const std::unique_ptr<PlayerInput>& player)
 {
     m_output_stream << player->getPrompt() << std::flush;
 }

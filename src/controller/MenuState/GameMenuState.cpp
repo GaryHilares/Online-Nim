@@ -1,8 +1,8 @@
 #include "../../../include/controller/MenuState/GameMenuState.hpp"
 #include "../../../include/controller/MenuState/MenuContext.hpp"
 
-GameMenuState::GameMenuState(std::ostream& output_stream, std::unique_ptr<Player> player_1,
-    std::unique_ptr<Player> player_2)
+GameMenuState::GameMenuState(std::ostream& output_stream, std::unique_ptr<PlayerInput> player_1,
+    std::unique_ptr<PlayerInput> player_2)
     : m_state()
     , m_player_1(std::move(player_1))
     , m_player_2(std::move(player_2))
@@ -15,7 +15,7 @@ void GameMenuState::run(MenuContext& menu_context)
     m_view.outputWelcome();
     while (!m_state.hasGameEnded()) {
         m_view.outputGameState();
-        std::unique_ptr<Player>& current_player = m_state.getTurn() == 1 ? m_player_1 : m_player_2;
+        std::unique_ptr<PlayerInput>& current_player = m_state.getTurn() == 1 ? m_player_1 : m_player_2;
         std::optional<Move> move;
         while (!move.has_value() || !m_state.isLegalMove(move.value())) {
             m_view.outputPrompt(current_player);

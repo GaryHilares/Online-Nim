@@ -1,16 +1,16 @@
 #include "../../../include/controller/PlayerInput/InputStreamPlayerInput.hpp"
 
-LocalStreamPlayer::LocalStreamPlayer(std::istream& input_stream)
+InputStreamPlayerInput::InputStreamPlayerInput(std::istream& input_stream)
     : m_input_stream(input_stream)
 {
 }
 
-std::string LocalStreamPlayer::getPrompt()
+std::string InputStreamPlayerInput::getPrompt()
 {
     return "Player> ";
 }
 
-std::optional<Move> LocalStreamPlayer::inputMove()
+std::optional<Move> InputStreamPlayerInput::inputMove()
 {
     int pile_number;
     int num_to_remove;

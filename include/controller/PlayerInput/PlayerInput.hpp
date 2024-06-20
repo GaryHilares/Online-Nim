@@ -3,9 +3,9 @@
 #include <optional>
 #include <string>
 
-class Player {
+class PlayerInput {
 public:
     virtual std::string getPrompt() = 0;
     virtual std::optional<Move> inputMove() = 0;
-    virtual ~Player() = default;
+    virtual ~PlayerInput() = default;
 };

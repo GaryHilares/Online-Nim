@@ -14,6 +14,6 @@ public:
     GameView(const GameState& game_state, std::ostream& output_stream);
     void outputWelcome();
     void outputGameState();
-    void outputPrompt(const std::unique_ptr<Player>& player);
+    void outputPrompt(const std::unique_ptr<PlayerInput>& player);
     void outputWinner();
 };

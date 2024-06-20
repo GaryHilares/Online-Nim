@@ -1,17 +1,17 @@
 #include "../../../include/controller/PlayerInput/LocalOnlinePlayerInput.hpp"
 
-LocalOnlinePlayer::LocalOnlinePlayer(std::istream& input_stream, std::shared_ptr<sf::TcpSocket> socket)
+LocalOnlinePlayerInput::LocalOnlinePlayerInput(std::istream& input_stream, std::shared_ptr<sf::TcpSocket> socket)
     : m_input_stream(input_stream)
     , m_socket(socket)
 {
 }
 
-std::string LocalOnlinePlayer::getPrompt()
+std::string LocalOnlinePlayerInput::getPrompt()
 {
     return "Player> ";
 }
 
-std::optional<Move> LocalOnlinePlayer::inputMove()
+std::optional<Move> LocalOnlinePlayerInput::inputMove()
 {
     int pile_number;
     int num_to_remove;
