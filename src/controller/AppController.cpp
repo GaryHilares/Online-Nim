@@ -1,5 +1,5 @@
 #include "../../include/controller/AppController.hpp"
-#include "../../include/controller/MenuStates/MainMenuState.hpp"
+#include "../../include/controller/MenuState/MainMenuState.hpp"
 #include <iostream>
 
 AppController::AppController()

@@ -1,5 +1,5 @@
 #pragma once
-#include "MenuStates/MenuState.hpp"
+#include "MenuState.hpp"
 #include <memory>
 
 class MenuContext {

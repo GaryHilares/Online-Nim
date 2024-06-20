@@ -1,5 +1,5 @@
 #pragma once
-#include "../controller/Player.hpp"
+#include "../controller/PlayerInput/PlayerInput.hpp"
 #include <memory>
 #include <ostream>
 

@@ -1,9 +1,9 @@
-#include "../../../include/controller/MenuStates/MainMenuState.hpp"
-#include "../../../include/controller/LocalStreamPlayer.hpp"
-#include "../../../include/controller/MenuContext.hpp"
-#include "../../../include/controller/MenuStates/GameMenuState.hpp"
-#include "../../../include/controller/MenuStates/HostMenuState.hpp"
-#include "../../../include/controller/MenuStates/JoinMenuState.hpp"
+#include "../../../include/controller/MenuState/MainMenuState.hpp"
+#include "../../../include/controller/MenuState/GameMenuState.hpp"
+#include "../../../include/controller/MenuState/HostMenuState.hpp"
+#include "../../../include/controller/MenuState/JoinMenuState.hpp"
+#include "../../../include/controller/MenuState/MenuContext.hpp"
+#include "../../../include/controller/PlayerInput/InputStreamPlayerInput.hpp"
 #include <string>
 
 MainMenuState::MainMenuState(std::istream& input_stream, std::ostream& output_stream)

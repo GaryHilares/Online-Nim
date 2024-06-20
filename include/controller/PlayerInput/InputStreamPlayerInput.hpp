@@ -1,5 +1,5 @@
 #pragma once
-#include "Player.hpp"
+#include "PlayerInput.hpp"
 #include <istream>
 
 class LocalStreamPlayer : public Player {

@@ -1,4 +1,4 @@
-#include "../../include/controller/RemoteOnlinePlayer.hpp"
+#include "../../../include/controller/PlayerInput/RemoteOnlinePlayerInput.hpp"
 #include <iostream>
 
 RemoteOnlinePlayer::RemoteOnlinePlayer(std::shared_ptr<sf::TcpSocket> socket)

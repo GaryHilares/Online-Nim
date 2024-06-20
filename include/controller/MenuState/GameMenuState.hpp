@@ -1,7 +1,7 @@
 #pragma once
 #include "../../model/GameState.hpp"
 #include "../../view/GameView.hpp"
-#include "../Player.hpp"
+#include "../PlayerInput/PlayerInput.hpp"
 #include "MenuState.hpp"
 #include <memory>
 

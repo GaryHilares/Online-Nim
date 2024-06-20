@@ -1,5 +1,5 @@
 #pragma once
-#include "Player.hpp"
+#include "PlayerInput.hpp"
 #include <SFML/Network.hpp>
 #include <memory>
 

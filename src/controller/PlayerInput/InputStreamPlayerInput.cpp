@@ -1,4 +1,4 @@
-#include "../../include/controller/LocalStreamPlayer.hpp"
+#include "../../../include/controller/PlayerInput/InputStreamPlayerInput.hpp"
 
 LocalStreamPlayer::LocalStreamPlayer(std::istream& input_stream)
     : m_input_stream(input_stream)

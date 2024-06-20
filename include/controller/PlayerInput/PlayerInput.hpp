@@ -1,5 +1,5 @@
 #pragma once
-#include "../model/Move.hpp"
+#include "../../model/Move.hpp"
 #include <optional>
 #include <string>
 

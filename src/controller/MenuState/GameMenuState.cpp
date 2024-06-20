@@ -1,5 +1,5 @@
-#include "../../../include/controller/MenuStates/GameMenuState.hpp"
-#include "../../../include/controller/MenuContext.hpp"
+#include "../../../include/controller/MenuState/GameMenuState.hpp"
+#include "../../../include/controller/MenuState/MenuContext.hpp"
 
 GameMenuState::GameMenuState(std::ostream& output_stream, Player* player_1, Player* player_2)
     : m_state()

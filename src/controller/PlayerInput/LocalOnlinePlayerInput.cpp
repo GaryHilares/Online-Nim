@@ -1,4 +1,4 @@
-#include "../../include/controller/LocalOnlinePlayer.hpp"
+#include "../../../include/controller/PlayerInput/LocalOnlinePlayerInput.hpp"
 
 LocalOnlinePlayer::LocalOnlinePlayer(std::istream& input_stream, std::shared_ptr<sf::TcpSocket> socket)
     : m_input_stream(input_stream)

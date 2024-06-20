@@ -1,9 +1,9 @@
-#include "../../../include/controller/MenuStates/HostMenuState.hpp"
-#include "../../../include/controller/LocalOnlinePlayer.hpp"
-#include "../../../include/controller/MenuContext.hpp"
-#include "../../../include/controller/MenuStates/GameMenuState.hpp"
-#include "../../../include/controller/MenuStates/MainMenuState.hpp"
-#include "../../../include/controller/RemoteOnlinePlayer.hpp"
+#include "../../../include/controller/MenuState/HostMenuState.hpp"
+#include "../../../include/controller/MenuState/GameMenuState.hpp"
+#include "../../../include/controller/MenuState/MainMenuState.hpp"
+#include "../../../include/controller/MenuState/MenuContext.hpp"
+#include "../../../include/controller/PlayerInput/LocalOnlinePlayerInput.hpp"
+#include "../../../include/controller/PlayerInput/RemoteOnlinePlayerInput.hpp"
 #include <memory>
 
 HostMenuState::HostMenuState(std::istream& input_stream, std::ostream& output_stream)
