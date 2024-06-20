@@ -61,7 +61,6 @@ set(CPPSources
     "src/controller/MenuStates/MainMenuState.cpp"
     "src/controller/MenuStates/HostMenuState.cpp"
     "src/controller/MenuStates/JoinMenuState.cpp"
-    "src/controller/InputScanner.cpp"
     "src/controller/MenuContext.cpp"
     "src/controller/LocalStreamPlayer.cpp"
     "src/controller/LocalOnlinePlayer.cpp"
