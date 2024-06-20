@@ -1,10 +1,11 @@
 #include "../../../include/controller/MenuState/GameMenuState.hpp"
 #include "../../../include/controller/MenuState/MenuContext.hpp"
 
-GameMenuState::GameMenuState(std::ostream& output_stream, Player* player_1, Player* player_2)
+GameMenuState::GameMenuState(std::ostream& output_stream, std::unique_ptr<Player> player_1,
+    std::unique_ptr<Player> player_2)
     : m_state()
-    , m_player_1(player_1)
-    , m_player_2(player_2)
+    , m_player_1(std::move(player_1))
+    , m_player_2(std::move(player_2))
     , m_view(m_state, output_stream)
 {
 }

@@ -1,14 +1,14 @@
 #include "../../../include/controller/MenuState/MenuContext.hpp"
 
-MenuContext::MenuContext(MenuState* state)
-    : m_state(state)
+MenuContext::MenuContext(std::unique_ptr<MenuState> state)
+    : m_state(std::move(state))
     , m_should_exit(false)
 {
 }
 
-void MenuContext::setState(MenuState* state)
+void MenuContext::setState(std::unique_ptr<MenuState> state)
 {
-    m_state.reset(state);
+    m_state = std::move(state);
 }
 
 void MenuContext::requestRun()

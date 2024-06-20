@@ -18,17 +18,17 @@ void HostMenuState::run(MenuContext& context)
     m_output_stream << "Waiting for incoming connection..." << std::endl;
     if (m_listener.listen(PORT) != sf::Socket::Done) {
         m_output_stream << "Could not listen to port " << PORT << "." << std::endl;
-        context.setState(new MainMenuState(m_input_stream, m_output_stream));
+        context.setState(std::make_unique<MainMenuState>(m_input_stream, m_output_stream));
     }
 
     std::shared_ptr<sf::TcpSocket> client = std::make_shared<sf::TcpSocket>();
     if (m_listener.accept(*client) != sf::Socket::Done) {
         m_output_stream << "Could not establish a connection." << std::endl;
-        context.setState(new MainMenuState(m_input_stream, m_output_stream));
+        context.setState(std::make_unique<MainMenuState>(m_input_stream, m_output_stream));
     }
 
     m_output_stream << "Established a connection successfully!" << std::endl;
-    context.setState(new GameMenuState(m_output_stream,
-        new LocalOnlinePlayer(m_input_stream, client),
-        new RemoteOnlinePlayer(client)));
+    context.setState(std::make_unique<GameMenuState>(m_output_stream,
+        std::make_unique<LocalOnlinePlayer>(m_input_stream, client),
+        std::make_unique<RemoteOnlinePlayer>(client)));
 }

@@ -25,11 +25,11 @@ void JoinMenuState::run(MenuContext& context)
     std::shared_ptr<sf::TcpSocket> client = std::make_shared<sf::TcpSocket>();
     if (client->connect(address, PORT) != sf::Socket::Done) {
         m_output_stream << "Could not connect to given address." << std::endl;
-        context.setState(new MainMenuState(m_input_stream, m_output_stream));
+        context.setState(std::make_unique<MainMenuState>(m_input_stream, m_output_stream));
     } else {
         m_output_stream << "Connection established successfully!" << std::endl;
-        context.setState(new GameMenuState(m_output_stream,
-            new RemoteOnlinePlayer(client),
-            new LocalOnlinePlayer(m_input_stream, client)));
+        context.setState(std::make_unique<GameMenuState>(m_output_stream,
+            std::make_unique<RemoteOnlinePlayer>(client),
+            std::make_unique<LocalOnlinePlayer>(m_input_stream, client)));
     }
 }

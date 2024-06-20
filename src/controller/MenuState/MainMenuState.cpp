@@ -24,12 +24,12 @@ void MainMenuState::run(MenuContext& context)
         m_output_stream << "Player> ";
     } while (!(m_input_stream >> choice && choice <= 3 && choice >= 1));
     if (choice == 1) {
-        context.setState(new GameMenuState(m_output_stream,
-            new LocalStreamPlayer(m_input_stream),
-            new LocalStreamPlayer(m_input_stream)));
+        context.setState(std::make_unique<GameMenuState>(m_output_stream,
+            std::make_unique<LocalStreamPlayer>(m_input_stream),
+            std::make_unique<LocalStreamPlayer>(m_input_stream)));
     } else if (choice == 2) {
-        context.setState(new HostMenuState(m_input_stream, m_output_stream));
+        context.setState(std::make_unique<HostMenuState>(m_input_stream, m_output_stream));
     } else {
-        context.setState(new JoinMenuState(m_input_stream, m_output_stream));
+        context.setState(std::make_unique<JoinMenuState>(m_input_stream, m_output_stream));
     }
 }

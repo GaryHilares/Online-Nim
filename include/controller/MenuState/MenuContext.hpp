@@ -8,8 +8,8 @@ private:
     bool m_should_exit;
 
 public:
-    MenuContext(MenuState* state);
-    void setState(MenuState* state);
+    MenuContext(std::unique_ptr<MenuState> state);
+    void setState(std::unique_ptr<MenuState> state);
     void requestRun();
     void setExit();
     bool shouldExit() const;

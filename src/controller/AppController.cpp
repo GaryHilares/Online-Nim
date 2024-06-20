@@ -3,7 +3,7 @@
 #include <iostream>
 
 AppController::AppController()
-    : m_context(new MainMenuState(std::cin, std::cout))
+    : m_context(std::make_unique<MainMenuState>(std::cin, std::cout))
 {
 }
 
