@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.14)
 project(OnlineNim)
 
 # Build settings
-set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_BUILD_TYPE "Testing")
 
 # C++ settings
 set(CMAKE_CXX_STANDARD 17) # 17+ required by application, 14+ required by GoogleTest
@@ -74,7 +74,7 @@ set(CPPSources
 if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "Release")
     set(CPPSources ${CPPSources} "src/main.cpp")
 elseif(CMAKE_BUILD_TYPE STREQUAL "Testing")
-    set(CPPSources ${CPPSources} "tests/example_test.cpp")
+    set(CPPSources ${CPPSources} "tests/menustate_integration_test.cpp")
 endif()
 set(LINK_LIBRARIES ${TO_LINK})
 set(INCLUDE_DIRS ${TO_INCLUDE})
