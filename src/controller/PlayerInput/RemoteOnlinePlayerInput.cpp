@@ -1,5 +1,7 @@
 #include "../../../include/controller/PlayerInput/RemoteOnlinePlayerInput.hpp"
+#include <cassert>
 #include <iostream>
+#include <stdexcept>
 
 RemoteOnlinePlayerInput::RemoteOnlinePlayerInput(std::shared_ptr<sf::TcpSocket> socket)
     : m_socket(socket)
@@ -13,11 +15,17 @@ std::string RemoteOnlinePlayerInput::getPrompt()
 
 std::optional<Move> RemoteOnlinePlayerInput::inputMove()
 {
-    constexpr std::size_t TO_RECEIVE = 2 * sizeof(int);
-    int payload[TO_RECEIVE];
+    constexpr std::size_t BYTES_TO_RECEIVE = 2 * sizeof(int);
+    int buffer[BYTES_TO_RECEIVE];
     std::size_t received;
-    if (m_socket->receive(payload, TO_RECEIVE, received) != sf::Socket::Done || received != TO_RECEIVE) {
+    switch (m_socket->receive(buffer, BYTES_TO_RECEIVE, received)) {
+    case sf::Socket::Done:
+        assert(received == BYTES_TO_RECEIVE);
+        return Move(buffer[0], buffer[1]);
+    case sf::Socket::Disconnected:
+    case sf::Socket::Error:
+        throw std::runtime_error("Socket could not receive move successfully.");
+    default:
         return std::nullopt;
     }
-    return Move(payload[0], payload[1]);
 }
